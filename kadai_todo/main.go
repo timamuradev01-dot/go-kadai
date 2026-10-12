@@ -17,7 +17,7 @@ func (todo *ToDo) Complete() {
 
 
 // 
-func (todo *ToDo) printTodos(todos []ToDo) {
+func printTodos(todos []ToDo) {
 	for _, v := range todos {
 		status := "未完了"
 		if v.Completed {
@@ -29,18 +29,29 @@ func (todo *ToDo) printTodos(todos []ToDo) {
 }
 
 func main() {
-	var todos []ToDo = []ToDo{
-		{1, "学習計画", false},
-		{2, "環境構築", false},
-		{3, "基礎文法", false},
-	}
+	// var todos []ToDo = []ToDo{
+	// 	{1, "学習計画", false},
+	// 	{2, "環境構築", false},
+	// 	{3, "基礎文法", false},
+	// }
 
-	var t ToDo
-	t.printTodos(todos)
+	// var t ToDo
+
+	// 1. 空のスライスを作成
+	todos := []ToDo{}
+
+	// 2. 初期値で ToDo を3つ作成
+	todo1 := ToDo{Id: 1, Title: "学習計画", Completed: false}
+	todo2 := ToDo{Id: 2, Title: "環境構築", Completed: false}
+	todo3 := ToDo{Id: 3, Title: "基礎文法", Completed: false}
+
+	// 3. スライスに追加
+	todos = append(todos, todo1, todo2, todo3)
+	printTodos(todos)
 
 	todos[0].Complete()
 	todos[1].Complete()
 
-	t.printTodos(todos)
+	printTodos(todos)
 
 }
